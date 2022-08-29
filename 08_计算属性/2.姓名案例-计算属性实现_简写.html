@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>姓名案例_计算属性_简写</title>
+	<script src='../vue.js'></script>
+</head>
+<body>
+<div id="root">
+	姓: <input type="text" v-model="firstname" placeholder="输入姓"><br>
+	名: <input type="text" v-model="lastname" placeholder="输入名">
+	<h3>全名:{{ fullName }}</h3>
+</div>
+</body>
+
+<script>
+	Vue.config.productionTip = false
+	const vm = new Vue({
+		el: '#root',
+		data: {
+			firstname: '张',
+			lastname: '振涛'
+		},
+		computed: {
+			//完整写法
+			/*			fullName: {
+              get() {
+                return this.firstname + '-' + this.lastname
+              },
+              set(value){
+                const arr = value.split('-')
+                this.firstname = arr[0];
+                this.lastname = arr[1];
+              }
+            }*/
+
+			//简写
+			fullName() {
+				return this.firstname + '-' + this.lastname
+			}
+		}
+	})
+</script>
+</html>

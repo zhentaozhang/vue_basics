@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>天气案例_深度监视</title>
+	<script src='../vue.js'></script>
+</head>
+<body>
+<div id="root">
+	<h2>今天天气很{{ info }}</h2>
+	<button @click="isHot=!isHot">切换天气</button>
+</div>
+</body>
+<script>
+	Vue.config.productionTip = false
+	const vm = new Vue({
+		el: '#root',
+		data: {
+			isHot: true,
+			numbers: {
+				a: 1,
+				b: 1
+			}
+		},
+		computed: {
+			info() {
+				return this.isHot ? '炎热' : '凉爽'
+			}
+		},
+		watch: {
+			//监视多级结构中某个属性的变化
+
+			//完整写法
+			/*isHot: {
+				deep: true,
+				handler(newValue, oldValue) {
+					console.log('天气的值改变了', newValue, oldValue)
+				}
+			}*/
+
+			//简写
+/*			isHot(newValue, oldValue) {
+				console.log('isHot被修改了', newValue, oldValue)
+			},*/
+		}
+	})
+
+	//完整写法
+/*	vm.$watch('isHot', {
+		immediate: true,  //初始化时调用一次handler
+		//当isHot发生改变时，handler被调用
+		handler(newValue, oldValue) {
+			console.log('isHot被修改了', newValue, oldValue)
+		},
+	})*/
+
+	//简写
+	vm.$watch('isHot',function (newValue,oldValue){
+		console.log('isHot被修改了', newValue, oldValue)
+	})
+</script>
+</html>

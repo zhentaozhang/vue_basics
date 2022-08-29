@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1.姓名案例</title>
+	<script src='../vue.js'></script>
+</head>
+<body>
+<div id="root">
+	姓: <input type="text" v-model="firstname" placeholder="输入姓"><br>
+	名: <input type="text" v-model="lastname" placeholder="输入名">
+<!--	<h3>全名:{{ firstname }}-{{ lastname }}</h3>-->
+
+	<h3>全名:{{fullName()}}</h3>
+</div>
+</body>
+<script>
+	//	return 返回的对象是个函数时，加()返回函数的结果，不加返回函数体
+	Vue.config.productionTip = false
+	new Vue({
+		el: '#root',
+		data: {
+			firstname: '张',
+			lastname: '振涛'
+		},
+		methods: {
+			fullName() {
+				return this.firstname+"-"+this.lastname
+			}
+		}
+	})
+</script>
+
+<style>
+	* {
+		padding: 0;
+	}
+</style>
+</html>

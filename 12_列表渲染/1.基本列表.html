@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>基本列表</title>
+	<script src='../vue.js'></script>
+</head>
+<body>
+<div id="root">
+	<ul>
+		<li v-for="item in persons" :key="item.id">{{ item.name }}--{{ item.age }}</li>
+	</ul>
+</div>
+</body>
+<script>
+	Vue.config.productionTip = false
+	new Vue({
+		el: '#root',
+		data: {
+			persons: [
+				{
+					id: '001',
+					name: 'zs',
+					age: 20,
+				},
+				{
+					id: '002',
+					name: 'ls',
+					age: 21,
+				},
+				{
+					id: '003',
+					name: 'ww',
+					age: 23,
+				}
+			]
+		}
+
+	})
+</script>
+</html>

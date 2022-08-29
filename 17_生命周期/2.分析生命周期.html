@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分析生命周期</title>
+	<script src='../vue.js'></script>
+</head>
+<body>
+<!--
+数据代理、数据监测
+vm的生命周期:    创建  挂载  更新  销毁
+		将要创建===>调用beforeCreate
+		创建完毕===>调用created
+		将要挂载===>调用beforeMount
+		挂载完毕===>调用mounted  (重要)
+		将要更新===>调用beforeUpdate
+		更新完毕===>调用updated
+		将要销毁===>调用beforeDestroy  (重要)
+		销毁完毕===>调用destroyed
+-->
+
+<div id="root">
+	<h2>{{ n }}</h2>
+	<h2 v-text="n"></h2>
+	<button @click="add">点我n+1</button>
+	<button @click="bey">点我销毁vm</button>
+</div>
+</body>
+<script>
+	Vue.config.productionTip = false
+	new Vue({
+		el: '#root',
+		data: {
+			n: 1
+		},
+		methods: {
+			add() {
+				console.log('add')
+				this.n++
+			},
+			bey() {
+				console.log('bey');
+				this.$destroy()
+			}
+		},
+		watch: {
+			n() {
+				console.log('n变了')
+			}
+		},
+		beforeCreate() {
+			console.log('beforeCreate');
+		},
+		created() {
+			console.log('created');
+		},
+		beforeMount() {
+			console.log('beforeMount');
+		},
+		mounted() {
+			console.log('mounted');
+		},
+		beforeUpdate() {
+			console.log('beforeUpdate');
+		},
+		updated() {
+			console.log('updated');
+		},
+		beforeDestroy() {
+			console.log('beforeDestroy');
+			console.log(this.n);
+			this.add()
+		},
+		destroyed() {
+			console.log('destroyed');
+		}
+	})
+</script>
+</html>

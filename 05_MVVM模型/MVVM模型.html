@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MVVM模型</title>
+	<!--
+	1. M：模型(Model) ：对应data 中的数据
+  2. V：视图(View) ：模板
+  3. VM：视图模型(ViewModel) ： Vue 实例对象
+
+  data中所有的属性，最后都出现在vm身上
+  vm所有的属性，及vue原型上所有的属性，在vue模板中都可以直接使用
+  -->
+	<script src='../vue.js'></script>
+</head>
+<body>
+<!--view-->
+<div id="root">
+	<h1>名字:{{ name }}</h1>
+	<h1>年龄:{{ age }}</h1>
+	<p>测试:{{ _c }}</p>
+</div>
+</body>
+<script>
+	Vue.config.productionTip = false
+
+	// view model
+	const vm = new Vue({
+		el: '#root',
+		//model
+		data: {
+			name: 'zzt',
+			age: 20
+		}
+	})
+	console.log(vm)
+</script>
+</html>

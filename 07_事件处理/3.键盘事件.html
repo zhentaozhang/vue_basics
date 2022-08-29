@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3.键盘事件</title>
+	<script src='../vue.js'></script>
+</head>
+<body>
+<div id="root">
+	<input type="text" placeholder="按下Enter提示" @keydown.enter="showInfo">
+</div>
+</body>
+<script>
+	Vue.config.productionTip = false
+	new Vue({
+		el:'#root',
+		methods:{
+			showInfo(e){
+				console.log('你按下了回车，值为:'+e.target.value)
+			}
+		}
+	})
+</script>
+</html>
